@@ -2,15 +2,18 @@
  * Created by 1795 on 2-10-2015.
  */
 
+import org.apache.commons.io.FileUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Files;
 import java.nio.charset.*;
+import java.io.File;
 
 
 
-public class ReadAndCompareImpl implements ReadAndCompare {
+
+public class ReadAndCompareImpl implements ReadAndCompare{
 
     public void readCompareText(Path inpPath, Path refPath) throws IOException {
         Charset cs = Charset.defaultCharset();
@@ -46,5 +49,21 @@ public class ReadAndCompareImpl implements ReadAndCompare {
             }catch (IOException e){
                 e.printStackTrace();
             }}
-    public static void main(String[] args) {}
+
+    //second method in interface
+    public void readCompareWithUtils(File file1, File file2) throws IOException{
+        boolean compareResult;
+
+        try {
+            compareResult = FileUtils.contentEquals(file1,file2);
+            if (compareResult){
+                System.out.println("Content Comparison Successful.");
+            }else {
+                System.out.println("Content Comparison Failed.");
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+//    public static void main(String[] args) {}
 }//end of Class

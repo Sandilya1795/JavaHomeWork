@@ -1,9 +1,5 @@
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Test;
-import org.junit.Assert.*;
-import org.testng.Assert;
-
-import java.io.IOException;
+import java.io.File;
 import java.nio.file.*;
 /**
  * Created by 1795 on 3-10-2015.
@@ -31,7 +27,7 @@ public class ReadAndCompareImplTest {
         Path refFilePath = Paths.get("D:\\java-study-notes\\input\\refJSON.txt");
         test3.readCompareText(inputFilePath, refFilePath);
         }catch (Exception e){e.printStackTrace();}
-        }//end of Test 3
+        }//end of Test 2
 
     @Test
     public void compare2XMLFiles() {
@@ -41,6 +37,18 @@ public class ReadAndCompareImplTest {
             Path refFilePath = Paths.get("D:\\java-study-notes\\input\\refBetalingen.xml");
             test4.readCompareText(inputFilePath, refFilePath);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }     //end of Test 3
+
+    @Test
+    public void compareXMLFilesContents() {
+        try {
+            ReadAndCompareImpl test5 = new ReadAndCompareImpl();
+            File inpFile = new File("D:\\java-study-notes\\input\\inpBetalingen.xml");
+            File refFile = new File("D:\\java-study-notes\\input\\refBetalingen.xml");
+            test5.readCompareWithUtils(inpFile,refFile);
+            } catch (Exception e) {
             e.printStackTrace();
         }
     }     //end of Test 4
